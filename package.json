@@ -1,24 +1,20 @@
 {
-  "name": "my-example-bounded-context",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "helloworld",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start-dev-server": "npx ts-node index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "ts-node index.ts",
+    "devstart": "nodemon index.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shiiyan/my-example-bounded-context.git"
+  "dependencies": {
+    "express": "~4.16.1"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/shiiyan/my-example-bounded-context/issues"
-  },
-  "homepage": "https://github.com/shiiyan/my-example-bounded-context#readme",
   "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.3.2",
     "nodemon": "^2.0.22",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
   }
 }
