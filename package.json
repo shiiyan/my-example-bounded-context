@@ -1,5 +1,5 @@
 {
-  "name": "helloworld",
+  "name": "my-example-bounded-context",
   "version": "0.0.0",
   "private": true,
   "scripts": {
