@@ -1,17 +1,8 @@
-import express, { Router, Request, Response } from "express";
+import { Request, Response } from "express";
+import { AbstractController } from "./abastractController";
 
-export class ForumController {
-  private router: Router;
-
-  constructor() {
-    this.router = express.Router();
-  }
-
-  public getRouter(): Router {
-    return this.router;
-  }
-
-  public initialize(): void {
+export class ForumController extends AbstractController {
+  protected initialize(): void {
     this.router.get("/forums", this.getForums);
   }
 
