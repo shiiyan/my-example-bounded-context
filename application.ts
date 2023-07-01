@@ -4,21 +4,23 @@ import { AbstractController } from "./controllers/abastractController";
 export class Application {
   private app: Express;
   private controllers: AbstractController[];
+  private port: number;
 
-  constructor(controllers: AbstractController[]) {
+  constructor(controllers: AbstractController[], port: number) {
     this.app = express();
     this.controllers = controllers;
-    this.initializeController();
+    this.port = port;
+    this.initializeControllers();
   }
 
   public listen(): void {
-    this.app.listen("8000", () => {
+    this.app.listen(this.port, () => {
       console.log("dev server running at: http://localhost:8000");
     });
   }
 
-  private initializeController(): void {
-    this.controllers.forEach((controller) =>
+  private initializeControllers(): void {
+    this.controllers.forEach((controller: AbstractController) =>
       this.app.use("/", controller.getRouter())
     );
   }
