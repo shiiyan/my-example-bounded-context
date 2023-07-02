@@ -10,6 +10,7 @@ export class Application {
     this.app = express();
     this.controllers = controllers;
     this.port = port;
+    this.initializeSettings();
     this.initializeControllers();
   }
 
@@ -17,6 +18,10 @@ export class Application {
     this.app.listen(this.port, () => {
       console.log(`dev server running at: http://localhost:${this.port}`);
     });
+  }
+
+  private initializeSettings(): void {
+    this.app.set("json spaces", 2);
   }
 
   private initializeControllers(): void {

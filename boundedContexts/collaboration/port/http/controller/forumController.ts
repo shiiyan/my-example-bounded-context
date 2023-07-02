@@ -7,6 +7,6 @@ export class ForumController extends AbstractController {
   }
 
   private async getForums(request: Request, response: Response): Promise<void> {
-    response.send("Hello forums!");
+    response.status(200).json({ forums: ["Hello forums!"] });
   }
 }
