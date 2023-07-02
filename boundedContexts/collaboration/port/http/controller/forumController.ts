@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { AbstractController } from "./abastractController";
+import { AbstractController } from "../../../../common/port/abstractController";
 
 export class ForumController extends AbstractController {
   protected initialize(): void {
