@@ -15,7 +15,7 @@ export class Application {
 
   public listen(): void {
     this.app.listen(this.port, () => {
-      console.log("dev server running at: http://localhost:8000");
+      console.log(`dev server running at: http://localhost:${this.port}`);
     });
   }
 
