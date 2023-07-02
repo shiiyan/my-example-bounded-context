@@ -1,5 +1,5 @@
 import express, { Express } from "express";
-import { AbstractController } from "@common/port/abstractController";
+import { AbstractController } from "@common/port/http/abstractController";
 
 export class Application {
   private app: Express;
