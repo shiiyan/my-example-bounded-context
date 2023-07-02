@@ -8,6 +8,7 @@
     "devstart": "DEBUG=express:* NODE_OPTIONS='-r tsconfig-paths/register' nodemon index.ts"
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
     "express": "~4.16.1"
   },
   "devDependencies": {
