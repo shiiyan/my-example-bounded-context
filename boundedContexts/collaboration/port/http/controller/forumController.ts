@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { AbstractController } from "../../../../common/port/abstractController";
+import { AbstractController } from "@common/port/abstractController";
 
 export class ForumController extends AbstractController {
   protected initialize(): void {
@@ -7,6 +7,6 @@ export class ForumController extends AbstractController {
   }
 
   private async getForums(request: Request, response: Response): Promise<void> {
-    response.send("Hello forums");
+    response.send("Hello forums!");
   }
 }

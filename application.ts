@@ -1,5 +1,5 @@
 import express, { Express } from "express";
-import { AbstractController } from "./boundedContexts/common/port/abstractController";
+import { AbstractController } from "@common/port/abstractController";
 
 export class Application {
   private app: Express;
