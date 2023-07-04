@@ -2,6 +2,7 @@ import { Moderator } from "@collaboration/domain/moderator";
 import { UUID } from "@common/domain/uuid";
 import { InvalidArgumentException } from "@common/exception/invalidArgumentException";
 import { Validator } from "@common/validation/validator";
+import { Post } from "./post";
 
 export class Forum {
   private _id: UUID;
@@ -36,10 +37,6 @@ export class Forum {
     return this._moderator;
   }
 
-  public canModeratedBy(moderator: Moderator): boolean {
-    return this.moderator.equals(moderator);
-  }
-
   public changeSubject({
     subject,
     moderator,
@@ -70,10 +67,14 @@ export class Forum {
       throw new Error("Not a post of this forum.");
     }
 
-    if (!this.moderator.equals(moderator)) {
-      throw new Error("Not the moderator of this forum.");
-    }
+    Validator.assertArgumentTrue({
+      canModerated: this.canModeratedBy(moderator),
+    });
 
-    post.changeContent(subject, body);
+    post._changeContent({subject, body});
+  }
+
+  private canModeratedBy(moderator: Moderator): boolean {
+    return this.moderator.equals(moderator);
   }
 }

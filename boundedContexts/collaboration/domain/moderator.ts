@@ -31,7 +31,7 @@ export class Moderator {
     return this._emailAddress;
   }
 
-  equals(moderator: Moderator): boolean {
+  public equals(moderator: Moderator): boolean {
     return this._id.equals(moderator.id);
   }
 }
