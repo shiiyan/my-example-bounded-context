@@ -30,4 +30,8 @@ export class Moderator {
   public get emailAddress(): string {
     return this._emailAddress;
   }
+
+  equals(moderator: Moderator): boolean {
+    return this._id.equals(moderator.id);
+  }
 }

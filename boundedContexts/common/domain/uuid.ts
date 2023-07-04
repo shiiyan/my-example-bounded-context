@@ -14,4 +14,8 @@ export class UUID {
   public set value(value: string) {
     this._value = value;
   }
+
+  public equals(that: UUID): boolean {
+    return this._value === that.value;
+  }
 }
