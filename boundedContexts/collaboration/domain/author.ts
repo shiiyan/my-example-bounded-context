@@ -1,7 +1,7 @@
-import { UUID } from "@common/domain/uuid";
 import { Collaborater } from "@collaboration/domain/collaborator";
+import { UUID } from "@common/domain/uuid";
 
-export class Moderator extends Collaborater {
+export class Author extends Collaborater {
   constructor({
     id,
     name,
@@ -14,7 +14,7 @@ export class Moderator extends Collaborater {
     super({ id, name, emailAddress });
   }
 
-  public equals(moderator: Moderator): boolean {
-    return this._id.equals(moderator.id);
+  public equals(author: Author): boolean {
+    return this._id.equals(author.id);
   }
 }
