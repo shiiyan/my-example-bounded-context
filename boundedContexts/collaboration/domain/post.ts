@@ -10,13 +10,7 @@ export class Post {
   private _forumId: UUID;
   private _author: Author;
 
-  /**
-   * Creates an instance of Post.
-   *
-   * @access \@collaboration/domain/*
-   * @memberof Post
-   */
-  constructor({
+  private constructor({
     subject,
     body,
     discussionId,
@@ -38,6 +32,32 @@ export class Post {
     this._discuccionId = discussionId;
     this._forumId = forumId;
     this._author = author;
+  }
+
+  /**
+   * @access \@collaboration/domain/*
+   * @memberof Post
+   */
+  public static _CreateNew({
+    subject,
+    body,
+    discussionId,
+    forumId,
+    author,
+  }: {
+    subject: string;
+    body: string;
+    discussionId: UUID;
+    forumId: UUID;
+    author: Author;
+  }): Post {
+    return new Post({
+      subject,
+      body,
+      discussionId,
+      forumId,
+      author,
+    });
   }
 
   public get id(): UUID {

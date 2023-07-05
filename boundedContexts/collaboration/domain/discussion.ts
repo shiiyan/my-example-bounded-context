@@ -49,7 +49,7 @@ export class Discussion {
     body: string;
     author: Author;
   }): Post {
-    return new Post({
+    return Post._CreateNew({
       subject,
       body,
       discussionId: this._id,
