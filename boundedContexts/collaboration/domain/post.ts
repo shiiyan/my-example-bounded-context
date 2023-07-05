@@ -1,6 +1,6 @@
 import { UUID } from "@common/domain/uuid";
-import { Forum } from "./forum";
 import { Validator } from "@common/validation/validator";
+import { Author } from "@collaboration/domain/author";
 
 export class Post {
   private _id: UUID;
@@ -8,6 +8,37 @@ export class Post {
   private _body: string;
   private _discuccionId: UUID;
   private _forumId: UUID;
+  private _author: Author;
+
+  /**
+   * Creates an instance of Post.
+   *
+   * @access \@collaboration/domain/*
+   * @memberof Post
+   */
+  constructor({
+    subject,
+    body,
+    discussionId,
+    forumId,
+    author,
+  }: {
+    subject: string;
+    body: string;
+    discussionId: UUID;
+    forumId: UUID;
+    author: Author;
+  }) {
+    Validator.assertArgumentNotEmpty({ subject });
+    Validator.assertArgumentNotEmpty({ body });
+
+    this._id = new UUID();
+    this._subject = subject;
+    this._body = body;
+    this._discuccionId = discussionId;
+    this._forumId = forumId;
+    this._author = author;
+  }
 
   public get id(): UUID {
     return this._id;
@@ -49,15 +80,16 @@ export class Post {
     this._forumId = value;
   }
 
+  public get author(): Author {
+    return this._author;
+  }
+
+  public set author(value: Author) {
+    this._author = value;
+  }
+
   /**
    * @access \@collaboration/domain/*
-   * @param {{
-   *     subject: string;
-   *     body: string;
-   *   }} {
-   *     subject,
-   *     body,
-   *   }
    * @memberof Post
    */
   public _changeContent({
