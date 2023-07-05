@@ -63,15 +63,19 @@ export class Forum {
     body: string;
     moderator: Moderator;
   }) {
-    if (post.forumId !== this._id) {
-      throw new Error("Not a post of this forum.");
-    }
+    Validator.assertArgumentTrue({
+      hasOwnership: this.hasOwnership(post),
+    });
 
     Validator.assertArgumentTrue({
       canModerated: this.canModeratedBy(moderator),
     });
 
-    post._changeContent({subject, body});
+    post._changeContent({ subject, body });
+  }
+
+  private hasOwnership(post: Post): boolean {
+    return this._id.equals(post.forumId);
   }
 
   private canModeratedBy(moderator: Moderator): boolean {

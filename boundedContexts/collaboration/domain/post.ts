@@ -7,6 +7,7 @@ export class Post {
   private _subject: string;
   private _body: string;
   private _discuccionId: UUID;
+  private _forumId: UUID;
 
   public get id(): UUID {
     return this._id;
@@ -38,6 +39,14 @@ export class Post {
 
   public set discuccionId(value: UUID) {
     this._discuccionId = value;
+  }
+
+  public get forumId(): UUID {
+    return this._forumId;
+  }
+
+  public set forumId(value: UUID) {
+    this._forumId = value;
   }
 
   /**
