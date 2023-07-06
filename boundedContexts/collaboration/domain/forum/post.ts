@@ -38,7 +38,7 @@ export class Post {
    * @access \@collaboration/domain/*
    * @memberof Post
    */
-  public static _CreateNew({
+  public static _createNew({
     subject,
     body,
     discussionId,
