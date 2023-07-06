@@ -7,6 +7,7 @@ export class Forum {
   private _id: UUID;
   private _subject: string;
   private _moderator: Moderator;
+  private _isClosed: boolean;
 
   constructor({
     id,
@@ -22,6 +23,7 @@ export class Forum {
     this._id = id;
     this._subject = subject;
     this._moderator = moderator;
+    this._isClosed = false;
   }
 
   public get id(): UUID {
@@ -36,6 +38,16 @@ export class Forum {
     return this._moderator;
   }
 
+  public get isClosed(): boolean {
+    return this._isClosed;
+  }
+
+  public close() {
+    Validator.assertStateFalse({ isClosed: this._isClosed });
+
+    this._isClosed = true;
+  }
+
   public changeSubject({
     subject,
     moderator,
@@ -43,6 +55,7 @@ export class Forum {
     subject: string;
     moderator: Moderator;
   }): void {
+    Validator.assertStateFalse({ isClosed: this._isClosed });
     Validator.assertArgumentTrue({
       canModerated: this.canModeratedBy(moderator),
     });
@@ -62,6 +75,7 @@ export class Forum {
     body: string;
     moderator: Moderator;
   }) {
+    Validator.assertStateFalse({ isClosed: this._isClosed });
     Validator.assertArgumentTrue({
       hasOwnership: this.hasOwnership(post),
     });
