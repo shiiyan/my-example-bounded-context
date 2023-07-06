@@ -2,6 +2,8 @@ import { UUID } from "@common/domain/uuid";
 import { Validator } from "@common/validation/validator";
 import { Post } from "./post";
 import { Moderator } from "@collaboration/domain/collaborator/moderator";
+import { Discussion } from "./discussion";
+import { Author } from "@collaboration/domain/collaborator/author";
 
 export class Forum {
   private _id: UUID;
@@ -43,7 +45,7 @@ export class Forum {
   }
 
   public close() {
-    Validator.assertStateFalse({ isClosed: this._isClosed });
+    Validator.assertStateFalse({ isClosed: this.isClosed });
 
     this._isClosed = true;
   }
@@ -55,13 +57,29 @@ export class Forum {
     subject: string;
     moderator: Moderator;
   }): void {
-    Validator.assertStateFalse({ isClosed: this._isClosed });
+    Validator.assertStateFalse({ isClosed: this.isClosed });
     Validator.assertArgumentTrue({
       canModerated: this.canModeratedBy(moderator),
     });
     Validator.assertArgumentNotEmpty({ subject });
 
     this._subject = subject;
+  }
+
+  public startDiscussion({
+    subject,
+    author,
+  }: {
+    subject: string;
+    author: Author;
+  }): Discussion {
+    Validator.assertStateFalse({ isClosed: this.isClosed });
+
+    return Discussion._createNew({
+      forumId: this.id,
+      subject,
+      author,
+    });
   }
 
   public moderatePost({
@@ -75,7 +93,7 @@ export class Forum {
     body: string;
     moderator: Moderator;
   }) {
-    Validator.assertStateFalse({ isClosed: this._isClosed });
+    Validator.assertStateFalse({ isClosed: this.isClosed });
     Validator.assertArgumentTrue({
       hasOwnership: this.hasOwnership(post),
     });
@@ -88,7 +106,7 @@ export class Forum {
   }
 
   private hasOwnership(post: Post): boolean {
-    return this._id.equals(post.forumId);
+    return this.id.equals(post.forumId);
   }
 
   private canModeratedBy(moderator: Moderator): boolean {
