@@ -1,5 +1,5 @@
 import { UUID } from "@common/domain/uuid";
-import { Post } from "@collaboration/domain/post";
+import { Post } from "@collaboration/domain/forum/post";
 import { Author } from "@collaboration/domain/collaborator/author";
 
 export class Discussion {
