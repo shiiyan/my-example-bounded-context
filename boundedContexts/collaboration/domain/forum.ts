@@ -1,8 +1,7 @@
-import { Moderator } from "@collaboration/domain/moderator";
 import { UUID } from "@common/domain/uuid";
-import { InvalidArgumentException } from "@common/exception/invalidArgumentException";
 import { Validator } from "@common/validation/validator";
 import { Post } from "./post";
+import { Moderator } from "@collaboration/domain/collaborator/moderator";
 
 export class Forum {
   private _id: UUID;

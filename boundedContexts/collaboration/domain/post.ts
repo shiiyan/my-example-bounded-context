@@ -1,6 +1,6 @@
 import { UUID } from "@common/domain/uuid";
 import { Validator } from "@common/validation/validator";
-import { Author } from "@collaboration/domain/author";
+import { Author } from "@collaboration/domain/collaborator/author";
 
 export class Post {
   private _id: UUID;
