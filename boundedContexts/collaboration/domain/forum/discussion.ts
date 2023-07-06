@@ -1,12 +1,52 @@
 import { UUID } from "@common/domain/uuid";
 import { Post } from "@collaboration/domain/forum/post";
 import { Author } from "@collaboration/domain/collaborator/author";
+import { Validator } from "@common/validation/validator";
 
 export class Discussion {
   private _id: UUID;
   private _forumId: UUID;
   private _subject: string;
   private _author: Author;
+  private _isClosed: boolean;
+
+  private constructor({
+    forumId,
+    subject,
+    author,
+  }: {
+    forumId: UUID;
+    subject: string;
+    author: Author;
+  }) {
+    Validator.assertArgumentNotEmpty({ subject });
+
+    this._id = new UUID();
+    this._forumId = forumId;
+    this._subject = subject;
+    this._author = author;
+    this._isClosed = false;
+  }
+
+  /**
+   * @access \@collaboration/domain/*
+   * @memberof Discussion
+   */
+  public static _createNew({
+    forumId,
+    subject,
+    author,
+  }: {
+    forumId: UUID;
+    subject: string;
+    author: Author;
+  }): Discussion {
+    return new Discussion({
+      forumId,
+      subject,
+      author,
+    });
+  }
 
   public get id(): UUID {
     return this._id;
@@ -40,6 +80,16 @@ export class Discussion {
     this._author = value;
   }
 
+  public get isClosed(): boolean {
+    return this._isClosed;
+  }
+
+  public close() {
+    Validator.assertStateFalse({ isClosed: this.isClosed });
+
+    this._isClosed = true;
+  }
+
   public post({
     subject,
     body,
@@ -49,11 +99,13 @@ export class Discussion {
     body: string;
     author: Author;
   }): Post {
-    return Post._CreateNew({
+    Validator.assertStateFalse({ isClosed: this.isClosed });
+
+    return Post._createNew({
       subject,
       body,
-      discussionId: this._id,
-      forumId: this._forumId,
+      discussionId: this.id,
+      forumId: this.forumId,
       author,
     });
   }
