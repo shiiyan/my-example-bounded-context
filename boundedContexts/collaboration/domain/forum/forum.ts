@@ -12,17 +12,15 @@ export class Forum {
   private _isClosed: boolean;
 
   constructor({
-    id,
     subject,
     moderator,
   }: {
-    id: UUID;
     subject: string;
     moderator: Moderator;
   }) {
     Validator.assertArgumentNotEmpty({ subject });
 
-    this._id = id;
+    this._id = new UUID();
     this._subject = subject;
     this._moderator = moderator;
     this._isClosed = false;
