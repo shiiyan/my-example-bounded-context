@@ -9,6 +9,7 @@ export class Post {
   private _discuccionId: UUID;
   private _forumId: UUID;
   private _author: Author;
+  private _replyToPostId: UUID;
 
   private constructor({
     subject,
@@ -16,12 +17,14 @@ export class Post {
     discussionId,
     forumId,
     author,
+    replyToPostId,
   }: {
     subject: string;
     body: string;
     discussionId: UUID;
     forumId: UUID;
     author: Author;
+    replyToPostId: UUID;
   }) {
     Validator.assertArgumentNotEmpty({ subject });
     Validator.assertArgumentNotEmpty({ body });
@@ -32,6 +35,7 @@ export class Post {
     this._discuccionId = discussionId;
     this._forumId = forumId;
     this._author = author;
+    this._replyToPostId = replyToPostId;
   }
 
   /**
@@ -44,12 +48,14 @@ export class Post {
     discussionId,
     forumId,
     author,
+    replyToPostId,
   }: {
     subject: string;
     body: string;
     discussionId: UUID;
     forumId: UUID;
     author: Author;
+    replyToPostId: UUID;
   }): Post {
     return new Post({
       subject,
@@ -57,6 +63,7 @@ export class Post {
       discussionId,
       forumId,
       author,
+      replyToPostId,
     });
   }
 
@@ -106,6 +113,14 @@ export class Post {
 
   public set author(value: Author) {
     this._author = value;
+  }
+
+  public get replyToPostId(): UUID {
+    return this._replyToPostId;
+  }
+
+  public set replyToPostId(value: UUID) {
+    this._replyToPostId = value;
   }
 
   /**

@@ -94,10 +94,12 @@ export class Discussion {
     subject,
     body,
     author,
+    replyToPostId,
   }: {
     subject: string;
     body: string;
     author: Author;
+    replyToPostId: UUID;
   }): Post {
     Validator.assertStateFalse({ isClosed: this.isClosed });
 
@@ -107,6 +109,7 @@ export class Discussion {
       discussionId: this.id,
       forumId: this.forumId,
       author,
+      replyToPostId,
     });
   }
 }
