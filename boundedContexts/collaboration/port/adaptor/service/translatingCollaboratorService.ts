@@ -2,7 +2,7 @@ import { CollaboratorServiceInterface } from "@collaboration/domain/collaborator
 import { Moderator } from "@collaboration/domain/collaborator/moderator";
 import { UserInRoleAdaptorInterface } from "@collaboration/port/adaptor/service/userInRoleAdaptorInterface";
 
-export class TransalatingCollaboratorService
+export class TranslatingCollaboratorService
   implements CollaboratorServiceInterface
 {
   private userInRoleAdaptor: UserInRoleAdaptorInterface;
