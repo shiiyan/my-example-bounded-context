@@ -1,7 +1,7 @@
 import { UUID } from "@common/domain/uuid";
-import { Collaborater } from "@collaboration/domain/collaborator/collaborator";
+import { Collaborator } from "@collaboration/domain/collaborator/collaborator";
 
-export class Moderator extends Collaborater {
+export class Moderator extends Collaborator {
   constructor({
     id,
     name,

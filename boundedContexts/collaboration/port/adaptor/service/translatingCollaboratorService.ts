@@ -19,6 +19,7 @@ export class TranslatingCollaboratorService
     return this.userInRoleAdaptor.toCollaborator<Moderator>({
       id: moderatorId,
       roleName: "moderator",
+      collaboratorClass: Moderator
     });
   }
 }

@@ -1,11 +1,13 @@
-import { Collaborater } from "@collaboration/domain/collaborator/collaborator";
+import { Collaborator } from "@collaboration/domain/collaborator/collaborator";
 
 export interface UserInRoleAdaptorInterface {
-  toCollaborator<T extends Collaborater>({
+  toCollaborator<T extends Collaborator>({
     id,
     roleName,
+    className,
   }: {
     id: string;
     roleName: string;
+    className: new (args: object) => T;
   }): T;
 }

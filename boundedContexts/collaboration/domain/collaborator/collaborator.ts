@@ -1,6 +1,6 @@
 import { UUID } from "@common/domain/uuid";
 
-export abstract class Collaborater {
+export abstract class Collaborator {
   protected _id: UUID;
   protected _name: string;
   protected _emailAddress: string;
@@ -31,5 +31,5 @@ export abstract class Collaborater {
     return this._emailAddress;
   }
 
-  public abstract equals(another: Collaborater): boolean;
+  public abstract equals(another: Collaborator): boolean;
 }
