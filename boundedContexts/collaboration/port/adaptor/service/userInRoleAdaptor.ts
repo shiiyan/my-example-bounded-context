@@ -20,12 +20,17 @@ export class UserInRoleAdaptor implements UserInRoleAdaptorInterface {
   }: {
     id: string;
     roleName: string;
-    className: new (args: ConstructorParameters<typeof Collaborator>) => T;
+    className: new (...args: ConstructorParameters<typeof Collaborator>) => T;
   }): T {
-    const response: GetUserInRoleResponse = this.userFacade.getUserInRole({ id, roleName });
+    const response: GetUserInRoleResponse = this.userFacade.getUserInRole({
+      id,
+      roleName,
+    });
 
     if (response === null) {
-      throw new InvalidArgumentException("toCollaborator has invalid argument.");
+      throw new InvalidArgumentException(
+        "toCollaborator has invalid argument."
+      );
     }
 
     return new className({
