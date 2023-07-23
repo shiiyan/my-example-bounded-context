@@ -8,6 +8,6 @@ export interface UserInRoleAdaptorInterface {
   }: {
     id: string;
     roleName: string;
-    className: new (args: object) => T;
+    className: new (...args: ConstructorParameters<typeof Collaborator>) => T;
   }): T;
 }

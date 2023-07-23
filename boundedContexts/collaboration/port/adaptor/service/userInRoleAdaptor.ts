@@ -1,6 +1,5 @@
 import { Collaborator } from "@collaboration/domain/collaborator/collaborator";
 import { UserInRoleAdaptorInterface } from "@collaboration/port/adaptor/service/userInRoleAdaptorInterface";
-import { UUID } from "@common/domain/uuid";
 import { InvalidArgumentException } from "@common/exception/invalidArgumentException";
 import {
   GetUserInRoleResponse,
