@@ -1,4 +1,4 @@
-import { ForumController } from "@collaboration/port/adaptor/http/controller/forumController";
+import { ForumController } from "@collaboration/port/http/controller/forumController";
 import { Application } from "./application";
 import "dotenv/config";
 

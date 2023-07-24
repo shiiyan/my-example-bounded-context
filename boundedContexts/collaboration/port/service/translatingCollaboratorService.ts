@@ -1,6 +1,6 @@
 import { CollaboratorServiceInterface } from "@collaboration/domain/collaborator/collaboratorServiceInterface";
 import { Moderator } from "@collaboration/domain/collaborator/moderator";
-import { UserInRoleAdaptorInterface } from "@collaboration/port/adaptor/service/userInRoleAdaptorInterface";
+import { UserInRoleAdaptorInterface } from "@collaboration/port/adaptor/userInRoleAdaptorInterface";
 
 export class TranslatingCollaboratorService
   implements CollaboratorServiceInterface
@@ -19,7 +19,7 @@ export class TranslatingCollaboratorService
     return this.userInRoleAdaptor.toCollaborator<Moderator>({
       id: moderatorId,
       roleName: "moderator",
-      className: Moderator
+      className: Moderator,
     });
   }
 }
