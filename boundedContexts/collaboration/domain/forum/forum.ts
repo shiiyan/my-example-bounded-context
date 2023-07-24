@@ -20,7 +20,7 @@ export class Forum {
   }) {
     Validator.assertArgumentNotEmpty({ subject });
 
-    this._id = new UUID();
+    this._id = UUID.createNew();
     this._subject = subject;
     this._moderator = moderator;
     this._isClosed = false;

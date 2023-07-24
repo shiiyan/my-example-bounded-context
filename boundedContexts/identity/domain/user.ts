@@ -12,7 +12,7 @@ export class User {
     userName: string;
     emailAddress: string;
   }) {
-    this._id = new UUID();
+    this._id = UUID.createNew();
     this._userName = userName;
     this._emailAddress = emailAddress;
   }

@@ -3,8 +3,12 @@ import { v4 as uuidv4 } from "uuid";
 export class UUID {
   private _value: string;
 
-  constructor() {
-    this._value = uuidv4();
+  constructor(value: string) {
+    this._value = value;
+  }
+
+  public static createNew(): UUID {
+    return new UUID(uuidv4());
   }
 
   public get value(): string {

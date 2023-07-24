@@ -21,7 +21,7 @@ export class Discussion {
   }) {
     Validator.assertArgumentNotEmpty({ subject });
 
-    this._id = new UUID();
+    this._id = UUID.createNew();
     this._forumId = forumId;
     this._subject = subject;
     this._author = author;

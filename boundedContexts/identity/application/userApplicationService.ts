@@ -15,7 +15,7 @@ export class UserApplicationService {
     roleName: string;
   }): UserInRoleDto | null {
     return {
-      id: new UUID(),
+      id: new UUID(id),
       name: "test-user",
       emailAddress: "test@example.com",
     };

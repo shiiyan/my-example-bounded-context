@@ -29,7 +29,7 @@ export class Post {
     Validator.assertArgumentNotEmpty({ subject });
     Validator.assertArgumentNotEmpty({ body });
 
-    this._id = new UUID();
+    this._id = UUID.createNew();
     this._subject = subject;
     this._body = body;
     this._discuccionId = discussionId;
