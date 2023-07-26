@@ -1,4 +1,6 @@
 import { UUID } from "@common/domain/uuid";
+import { Validator } from "@common/validation/validator";
+import { GroupMember } from "@identity/domain/identity/groupMember";
 
 export class User {
   private _id: UUID;
@@ -12,6 +14,9 @@ export class User {
     userName: string;
     emailAddress: string;
   }) {
+    Validator.assertArgumentNotEmpty({ userName });
+    Validator.assertArgumentNotEmpty({ emailAddress });
+
     this._id = UUID.createNew();
     this._userName = userName;
     this._emailAddress = emailAddress;
@@ -25,7 +30,9 @@ export class User {
     return this._userName;
   }
 
-  public set userName(value: string) {
+  public changeUserName(value: string) {
+    Validator.assertArgumentNotEmpty({ value });
+
     this._userName = value;
   }
 
@@ -33,7 +40,17 @@ export class User {
     return this._emailAddress;
   }
 
-  public set emailAddress(value: string) {
+  public changeEmailAddress(value: string) {
+    Validator.assertArgumentNotEmpty({ value });
+
     this._emailAddress = value;
+  }
+
+  public toGroupMember(): GroupMember {
+    return new GroupMember({
+      id: this.userId,
+      name: this.userName,
+      type: "user",
+    });
   }
 }
