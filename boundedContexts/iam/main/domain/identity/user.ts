@@ -1,6 +1,7 @@
 import { UUID } from "@common/domain/uuid";
 import { Validator } from "@common/validation/validator";
 import { GroupMember } from "@iam/main/domain/identity/groupMember";
+import { GroupMemberType } from "./groupMemberType";
 
 export class User {
   private _id: UUID;
@@ -50,7 +51,7 @@ export class User {
     return new GroupMember({
       id: this.userId,
       name: this.userName,
-      type: "user",
+      type: GroupMemberType.User,
     });
   }
 }

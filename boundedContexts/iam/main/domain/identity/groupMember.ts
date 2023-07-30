@@ -1,6 +1,5 @@
 import { UUID } from "@common/domain/uuid";
-
-export type GroupMemberType = "user" | "group";
+import { GroupMemberType } from "@iam/main/domain/identity/groupMemberType";
 
 export class GroupMember {
   private _id: UUID;
@@ -43,5 +42,13 @@ export class GroupMember {
 
   public set type(value: GroupMemberType) {
     this._type = value;
+  }
+
+  public isSame(that: GroupMember): boolean {
+    return (
+      this.id.equals(that.id) &&
+      this.name === that.name &&
+      this.type === that.type
+    );
   }
 }

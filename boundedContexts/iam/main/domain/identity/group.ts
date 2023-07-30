@@ -34,7 +34,11 @@ export class Group {
   }
 
   public isMember(user: User): boolean {
-    return this._groupMembers.includes(user.toGroupMember());
+    return Boolean(
+      this._groupMembers.find((member: GroupMember) =>
+        member.isSame(user.toGroupMember())
+      )
+    );
 
     // TODO: find member from nested groups.
   }
