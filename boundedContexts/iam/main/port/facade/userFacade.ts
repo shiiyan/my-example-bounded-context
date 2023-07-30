@@ -1,5 +1,5 @@
 import { UUID } from "@common/domain/uuid";
-import { UserApplicationService } from "@iam/main/application/userApplicationService";
+import { UserApplicationService } from "@iam/main/application/roleApplicationService";
 import { UserPresenter } from "@iam/main/port/presentation/userPresenter";
 
 export type GetUserInRoleResponse = {
