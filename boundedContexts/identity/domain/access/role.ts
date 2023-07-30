@@ -24,7 +24,7 @@ export class Role {
     return this._name;
   }
 
-  public changeName(value: string) {
+  public changeName(value: string): void {
     Validator.assertArgumentNotEmpty({ value });
 
     this._name = value;
@@ -34,7 +34,7 @@ export class Role {
     return this._group;
   }
 
-  public assignUser(user: User) {
+  public assignUser(user: User): void {
     this._group.addUser(user);
   }
 
