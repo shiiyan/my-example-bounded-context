@@ -35,6 +35,8 @@ export class Role {
   }
 
   public assignUser(user: User): void {
+    Validator.assertStateFalse({ isInRole: this.isInRole(user) });
+
     this._group.addUser(user);
   }
 

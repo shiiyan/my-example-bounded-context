@@ -41,3 +41,11 @@ test("when assign user to role, then another user with same email address is not
 
   expect(role.isInRole(anotherUser)).toBeFalsy();
 });
+
+test("when assign user to role twice, then throw error", () => {
+  const role = new Role({ name: "tester" });
+  const user = new User({ userName: "A", emailAddress: "a@example.com" });
+  role.assignUser(user);
+
+  expect(() => role.assignUser(user)).toThrow();
+});
