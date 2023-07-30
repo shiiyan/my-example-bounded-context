@@ -1,6 +1,6 @@
 import { UUID } from "@common/domain/uuid";
 import { Validator } from "@common/validation/validator";
-import { GroupMember } from "@identity/main/domain/identity/groupMember";
+import { GroupMember } from "@iam/main/domain/identity/groupMember";
 
 export class User {
   private _id: UUID;
