@@ -9,18 +9,34 @@ export class User {
   private _emailAddress: string;
 
   constructor({
+    id,
     userName,
     emailAddress,
   }: {
+    id: UUID;
     userName: string;
     emailAddress: string;
   }) {
     Validator.assertArgumentNotEmpty({ userName });
     Validator.assertArgumentNotEmpty({ emailAddress });
 
-    this._id = UUID.createNew();
+    this._id = id;
     this._userName = userName;
     this._emailAddress = emailAddress;
+  }
+
+  public static createNew({
+    userName,
+    emailAddress,
+  }: {
+    userName: string;
+    emailAddress: string;
+  }): User {
+    return new User({
+      id: UUID.createNew(),
+      userName,
+      emailAddress,
+    });
   }
 
   public get userId(): UUID {
