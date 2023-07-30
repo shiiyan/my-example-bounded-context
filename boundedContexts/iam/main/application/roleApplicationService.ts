@@ -1,10 +1,5 @@
 import { UUID } from "@common/domain/uuid";
-
-export type UserInRoleDto = {
-  id: UUID;
-  name: string;
-  emailAddress: string;
-};
+import { UserInRoleDto } from "@iam/main/application/dto/userInRoleDto";
 
 export class UserApplicationService {
   public getUserInRole({
@@ -14,6 +9,10 @@ export class UserApplicationService {
     id: string;
     roleName: string;
   }): UserInRoleDto | null {
-    throw new Error("Method not implemented.");
+    return new UserInRoleDto(
+      new UUID(id),
+      "test",
+      "test@example"
+    );
   }
 }

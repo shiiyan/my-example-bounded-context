@@ -1,4 +1,4 @@
-import { UserInRoleDto } from "@iam/main/application/roleApplicationService";
+import { UserInRoleDto } from "@iam/main/application/dto/userInRoleDto";
 import { GetUserInRoleResponse } from "../facade/userFacade";
 
 export class UserPresenter {
