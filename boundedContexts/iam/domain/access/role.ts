@@ -1,7 +1,7 @@
 import { UUID } from "@common/domain/uuid";
 import { Validator } from "@common/validation/validator";
-import { Group } from "@identity/domain/identity/group";
-import { User } from "@identity/domain/identity/user";
+import { Group } from "boundedContexts/iam/domain/identity/group";
+import { User } from "boundedContexts/iam/domain/identity/user";
 
 export class Role {
   private _id: UUID;

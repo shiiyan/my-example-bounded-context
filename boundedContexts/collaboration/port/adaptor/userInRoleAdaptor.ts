@@ -4,7 +4,7 @@ import { InvalidArgumentException } from "@common/exception/invalidArgumentExcep
 import {
   GetUserInRoleResponse,
   UserFacade,
-} from "@identity/port/facade/userFacade";
+} from "boundedContexts/iam/port/facade/userFacade";
 
 export class UserInRoleAdaptor implements UserInRoleAdaptorInterface {
   private userFacade: UserFacade;
