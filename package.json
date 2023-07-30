@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "compile": "tsc",
+    "build": "tsc",
     "start": "ts-node -r tsconfig-paths/register index.ts",
     "devstart": "DEBUG=express:* NODE_OPTIONS='-r tsconfig-paths/register' nodemon index.ts"
   },
