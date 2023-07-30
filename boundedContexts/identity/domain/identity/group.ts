@@ -25,11 +25,11 @@ export class Group {
     return this._groupMembers;
   }
 
-  public addGroup(group: Group) {
+  public addGroup(group: Group): void {
     throw new Error("Method not implemented.");
   }
 
-  public addUser(user: User) {
+  public addUser(user: User): void {
     this._groupMembers.push(user.toGroupMember());
   }
 
@@ -39,7 +39,7 @@ export class Group {
     // TODO: find member from nested groups.
   }
 
-  public toGroupMember() {
+  public toGroupMember(): GroupMember {
     throw new Error("Method not implemented.");
   }
 }
