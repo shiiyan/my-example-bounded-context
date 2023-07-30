@@ -1,6 +1,6 @@
 import { UUID } from "@common/domain/uuid";
-import { GroupMember } from "boundedContexts/iam/domain/identity/groupMember";
-import { User } from "boundedContexts/iam/domain/identity/user";
+import { GroupMember } from "@identity/main/domain/identity/groupMember";
+import { User } from "@identity/main/domain/identity/user";
 
 export class Group {
   private readonly _id: UUID;

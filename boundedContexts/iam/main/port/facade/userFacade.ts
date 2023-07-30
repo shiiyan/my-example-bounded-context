@@ -1,6 +1,6 @@
 import { UUID } from "@common/domain/uuid";
-import { UserApplicationService } from "boundedContexts/iam/application/userApplicationService";
-import { UserPresenter } from "boundedContexts/iam/port/presentation/userPresenter";
+import { UserApplicationService } from "@identity/main/application/userApplicationService";
+import { UserPresenter } from "@identity/main/port/presentation/userPresenter";
 
 export type GetUserInRoleResponse = {
   id: UUID;

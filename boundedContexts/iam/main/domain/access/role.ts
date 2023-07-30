@@ -1,7 +1,7 @@
 import { UUID } from "@common/domain/uuid";
 import { Validator } from "@common/validation/validator";
-import { Group } from "boundedContexts/iam/domain/identity/group";
-import { User } from "boundedContexts/iam/domain/identity/user";
+import { Group } from "@identity/main/domain/identity/group";
+import { User } from "@identity/main/domain/identity/user";
 
 export class Role {
   private _id: UUID;
@@ -38,7 +38,7 @@ export class Role {
     this._group.addUser(user);
   }
 
-  public unassignUser(user: User) {}
+  public unassignUser(user: User): void {}
 
   public isInRole(user: User): boolean {
     return this._group.isMember(user);
