@@ -12,6 +12,10 @@ export class InMemoryUserRepository implements UserRepositoryInterface {
   private data: { [index: string]: string } = {};
 
   public findById(userId: UUID): User | null {
+    if (!this.data.hasOwnProperty(userId.value)) {
+      return null;
+    }
+
     const parsed = <UserSchema>JSON.parse(this.data[userId.value]);
 
     return new User({
