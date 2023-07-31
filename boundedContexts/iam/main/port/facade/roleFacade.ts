@@ -31,7 +31,7 @@ export class RoleFacade {
     roleName: string;
   }): GetUserInRoleResponse {
     return this.rolePresenter.toGetUserInRoleResponse(
-      this.roleApplicationService.getUserInRole({ id, roleName })
+      this.roleApplicationService.getUserInRole({ id: new UUID(id), roleName })
     );
   }
 }
