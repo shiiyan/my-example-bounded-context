@@ -3,14 +3,14 @@ import { UserInRoleAdaptorInterface } from "@collaboration/port/adaptor/userInRo
 import { InvalidArgumentException } from "@common/exception/invalidArgumentException";
 import {
   GetUserInRoleResponse,
-  UserFacade,
-} from "@iam/main/port/facade/userFacade";
+  RoleFacade,
+} from "@iam/main/port/facade/roleFacade";
 
 export class UserInRoleAdaptor implements UserInRoleAdaptorInterface {
-  private userFacade: UserFacade;
+  private roleFacade: RoleFacade;
 
-  constructor(userFacade: UserFacade) {
-    this.userFacade = userFacade;
+  constructor(userFacade: RoleFacade) {
+    this.roleFacade = userFacade;
   }
   toCollaborator<T extends Collaborator>({
     id,
@@ -21,7 +21,7 @@ export class UserInRoleAdaptor implements UserInRoleAdaptorInterface {
     roleName: string;
     className: new (...args: ConstructorParameters<typeof Collaborator>) => T;
   }): T {
-    const response: GetUserInRoleResponse = this.userFacade.getUserInRole({
+    const response: GetUserInRoleResponse = this.roleFacade.getUserInRole({
       id,
       roleName,
     });

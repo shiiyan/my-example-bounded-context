@@ -1,7 +1,7 @@
 import { UUID } from "@common/domain/uuid";
 import { UserInRoleDto } from "@iam/main/application/dto/userInRoleDto";
 
-export class UserApplicationService {
+export class RoleApplicationService {
   public getUserInRole({
     id,
     roleName,
@@ -9,10 +9,6 @@ export class UserApplicationService {
     id: string;
     roleName: string;
   }): UserInRoleDto | null {
-    return new UserInRoleDto(
-      new UUID(id),
-      "test",
-      "test@example"
-    );
+    return new UserInRoleDto(new UUID(id), "test", "test@example");
   }
 }

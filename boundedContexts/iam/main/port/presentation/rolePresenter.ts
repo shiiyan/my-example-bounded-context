@@ -1,7 +1,7 @@
 import { UserInRoleDto } from "@iam/main/application/dto/userInRoleDto";
-import { GetUserInRoleResponse } from "../facade/userFacade";
+import { GetUserInRoleResponse } from "../facade/roleFacade";
 
-export class UserPresenter {
+export class RolePresenter {
   public toGetUserInRoleResponse(
     userInRoleDto: UserInRoleDto | null
   ): GetUserInRoleResponse {
