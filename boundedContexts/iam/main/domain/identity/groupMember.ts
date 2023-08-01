@@ -1,4 +1,5 @@
 import { UUID } from "@common/domain/uuid";
+import { Validator } from "@common/validation/validator";
 import { GroupMemberType } from "@iam/main/domain/identity/groupMemberType";
 
 export class GroupMember {
@@ -15,6 +16,8 @@ export class GroupMember {
     name: string;
     type: GroupMemberType;
   }) {
+    Validator.assertArgumentNotEmpty({ name });
+
     this._id = id;
     this._name = name;
     this._type = type;

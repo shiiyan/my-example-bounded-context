@@ -1,4 +1,5 @@
 import { UUID } from "@common/domain/uuid";
+import { Validator } from "@common/validation/validator";
 import { GroupMember } from "@iam/main/domain/identity/groupMember";
 import { User } from "@iam/main/domain/identity/user";
 
@@ -7,10 +8,24 @@ export class Group {
   private readonly _name: string;
   private _groupMembers: GroupMember[] = [];
 
-  constructor({ name }: { name: string }) {
-    this._id = UUID.createNew();
+  constructor({
+    id,
+    name,
+    groupMembers,
+  }: {
+    id: UUID;
+    name: string;
+    groupMembers: GroupMember[];
+  }) {
+    Validator.assertArgumentNotEmpty({ name });
+
+    this._id = id;
     this._name = name;
-    this._groupMembers = [];
+    this._groupMembers = groupMembers;
+  }
+
+  public static createNew({ name }: { name: string }): Group {
+    return new Group({ id: UUID.createNew(), name: name, groupMembers: [] });
   }
 
   public get id(): UUID {

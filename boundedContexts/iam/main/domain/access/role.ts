@@ -5,15 +5,19 @@ import { User } from "@iam/main/domain/identity/user";
 
 export class Role {
   private _id: UUID;
-  private _group: Group;
   private _name: string;
+  private _group: Group;
 
-  constructor({ name }: { name: string }) {
+  constructor({ id, name, group }: { id: UUID; name: string; group: Group }) {
     Validator.assertArgumentNotEmpty({ name });
 
-    this._id = UUID.createNew();
+    this._id = id;
     this._name = name;
-    this._group = new Group({ name });
+    this._group = group;
+  }
+
+  public static createNew({ name }: { name: string }): Role {
+    return new Role({ id: UUID.createNew(), name, group: Group.createNew({ name }) });
   }
 
   public get id(): UUID {
