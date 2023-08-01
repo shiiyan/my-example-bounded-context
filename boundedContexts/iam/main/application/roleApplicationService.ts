@@ -16,8 +16,8 @@ export class RoleApplicationService {
     id: UUID;
     roleName: string;
   }): UserInRoleDto | null {
-    const foundUser = this.userRepository.findById(id);
-    if (foundUser === null) {
+    const user = this.userRepository.findById(id);
+    if (user === null) {
       return null;
     }
 
