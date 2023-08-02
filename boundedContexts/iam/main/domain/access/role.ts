@@ -2,6 +2,7 @@ import { UUID } from "@common/domain/uuid";
 import { Validator } from "@common/validation/validator";
 import { Group } from "@iam/main/domain/identity/group";
 import { User } from "@iam/main/domain/identity/user";
+import { RoleNameUniquenessInspector } from "@iam/main/domain/access/roleNameUniquenessInspector";
 
 export class Role {
   private _id: UUID;
@@ -16,8 +17,20 @@ export class Role {
     this._group = group;
   }
 
-  public static createNew({ name }: { name: string }): Role {
-    return new Role({ id: UUID.createNew(), name, group: Group.createNew({ name }) });
+  public static createNew({
+    name,
+    inspector,
+  }: {
+    name: string;
+    inspector: RoleNameUniquenessInspector;
+  }): Role {
+    Validator.assertStateFalse({ isRoleNameExist: inspector.exists({ name }) });
+
+    return new Role({
+      id: UUID.createNew(),
+      name,
+      group: Group.createNew({ name }),
+    });
   }
 
   public get id(): UUID {
@@ -28,10 +41,17 @@ export class Role {
     return this._name;
   }
 
-  public changeName(value: string): void {
-    Validator.assertArgumentNotEmpty({ value });
+  public changeName({
+    name,
+    inspector,
+  }: {
+    name: string;
+    inspector: RoleNameUniquenessInspector;
+  }): void {
+    Validator.assertArgumentNotEmpty({ value: name });
+    Validator.assertStateFalse({ isRoleNameExist: inspector.exists({ name }) });
 
-    this._name = value;
+    this._name = name;
   }
 
   public get group(): Group {
